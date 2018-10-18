@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">SnapKitTestApp</string>
+    <string name="app_permission_text">This app needs read permission</string>
+</resources>
