@@ -28,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
     SnapCreativeKitApi snapCreativeKitApi;
     boolean photoPicker;
 
-    private static final int READ_STORAGE_PERM = 123;
+    private static final int WRITE_STORAGE_PERM = 123;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,7 +45,6 @@ public class MainActivity extends AppCompatActivity {
         sendButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("click", "hit click");
                 startPhotoSend();
             }
         });
@@ -55,10 +54,6 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
-        Log.d("request code", "request: " + requestCode);
-        Log.d("result code","result: " + resultCode);
-
         if(photoPicker) {
             EasyImage.handleActivityResult(requestCode, resultCode, data, this, new DefaultCallback() {
                 @Override
@@ -89,8 +84,8 @@ public class MainActivity extends AppCompatActivity {
                 return;
             }
             SnapPhotoContent snapPhotoContent = new SnapPhotoContent(photoFile);
-            snapPhotoContent.setCaptionText("Sent from Poshmark");
-            snapPhotoContent.setAttachmentUrl("poshmark://feed");
+            snapPhotoContent.setCaptionText("Sent from My Android App");
+            snapPhotoContent.setAttachmentUrl("www.google.com");
 
             snapCreativeKitApi.send(snapPhotoContent);
             Log.d("Snapchat", "Photo sent to snapchat");
@@ -105,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
             photoPicker = true;
         } else {
             //does not have permissions
-            EasyPermissions.requestPermissions(this, getString(R.string.app_permission_text), READ_STORAGE_PERM, Manifest.permission.WRITE_EXTERNAL_STORAGE);
+            EasyPermissions.requestPermissions(this, getString(R.string.app_permission_text), WRITE_STORAGE_PERM, Manifest.permission.WRITE_EXTERNAL_STORAGE);
         }
     }
 
