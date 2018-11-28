@@ -11,4 +11,4 @@ Next:
 
 Make sure to replace the client id in the Android manifest file with your own client id before trying to build and run the app.
 
-Medium article coming soon.
+Medium article here: https://medium.com/@oglesby.harrison/developing-for-snapkit-on-android-creative-kit-sdk-for-snapchat-27c34378607
